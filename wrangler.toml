@@ -9,3 +9,6 @@ kv_namespaces = [
 ]
 [vars]
 SEC="test"
+
+[observability.logs]
+enabled = true

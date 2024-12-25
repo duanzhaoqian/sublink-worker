@@ -6,15 +6,14 @@ import { PREDEFINED_RULE_SETS, SING_BOX_CONFIG, CLASH_CONFIG } from './config.js
 import yaml from 'js-yaml'
 
 addEventListener('fetch', (event) => {
-  console.log(event.request)
-  console.log(event.env)
+  // console.log(SUBLINK_KV)
+  console.log(SEC)
   event.respondWith(handleRequest(event.request))
 })
 
 async function handleRequest(request) {
   try {
     const url = new URL(request.url)
-
     if (request.method === 'GET' && url.pathname === '/') {
       // Return the HTML form for GET requests
       return new Response(generateHtml('', '', '', url.origin), {

@@ -1,5 +1,5 @@
-import { UNIFIED_RULES, PREDEFINED_RULE_SETS } from './config.js';
-import { generateStyles } from './style.js';
+import { UNIFIED_RULES, PREDEFINED_RULE_SETS } from './config.js'
+import { generateStyles } from './style.js'
 
 export function generateHtml(xrayUrl, singboxUrl, clashUrl, baseUrl) {
   return `
@@ -8,7 +8,7 @@ export function generateHtml(xrayUrl, singboxUrl, clashUrl, baseUrl) {
       ${generateHead()}
       ${generateBody(xrayUrl, singboxUrl, clashUrl, baseUrl)}
     </html>
-  `;
+  `
 }
 
 const generateHead = () => `
@@ -29,9 +29,7 @@ const generateHead = () => `
       ${generateStyles()}
     </style>
   </head>
-`;
-
-
+`
 
 const generateBody = (xrayUrl, singboxUrl, clashUrl, baseUrl) => `
   <body>
@@ -49,29 +47,27 @@ const generateBody = (xrayUrl, singboxUrl, clashUrl, baseUrl) => `
       </div>
     </div>
     ${generateScripts()}
-    <!-- Cloudflare Web Analytics -->
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "67ed5892c109479cb0baddfaa9249c4e"}'></script>
-    <!-- End Cloudflare Web Analytics -->
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d25af21e767f4858956dfb8e8eed4c86"}'></script><!-- End Cloudflare Web Analytics -->
   </body>
-`;
+`
 
 const generateDarkModeToggle = () => `
   <button id="darkModeToggle" class="btn btn-outline-secondary">
     <i class="fas fa-moon"></i>
   </button>
-`;
+`
 
 const generateGithubLink = () => `
   <a href="https://github.com/7Sageer/sublink-worker" target="_blank" rel="noopener noreferrer" class="github-link">
     <i class="fab fa-github"></i>
   </a>
-`;
+`
 
 const generateCardHeader = () => `
   <div class="card-header text-center">
     <h1 class="display-4 mb-0">Sublink Worker</h1>
   </div>
-`;
+`
 
 const generateForm = () => `
   <form method="POST" id="encodeForm">
@@ -127,7 +123,7 @@ const generateForm = () => `
       </button>
     </div>
   </form>
-`;
+`
 
 const generateSubscribeLinks = (xrayUrl, singboxUrl, clashUrl, baseUrl) => `
   <div class="mt-5">
@@ -156,7 +152,7 @@ const generateSubscribeLinks = (xrayUrl, singboxUrl, clashUrl, baseUrl) => `
       </button>
     </div>
   </div>
-`;
+`
 
 const generateLinkInput = (label, id, value) => `
   <div class="mb-4">
@@ -172,7 +168,7 @@ const generateLinkInput = (label, id, value) => `
       </button>
     </div>
   </div>
-`;
+`
 
 const generateScripts = () => `
   <script>
@@ -189,7 +185,7 @@ const generateScripts = () => `
     ${saveConfig()}
     ${clearConfig()}
   </script>
-`;
+`
 
 const customPathFunctions = () => `
   function saveCustomPath() {
@@ -240,7 +236,7 @@ const customPathFunctions = () => `
     updateSavedPathsDropdown();
     document.getElementById('savedCustomPaths').addEventListener('change', loadSavedCustomPath);
   });
-`;
+`
 
 const advancedOptionsToggleFunction = () => `
   document.getElementById('advancedToggle').addEventListener('change', function() {
@@ -251,7 +247,7 @@ const advancedOptionsToggleFunction = () => `
       advancedOptions.classList.remove('show');
     }
   });
-`;
+`
 
 const copyToClipboardFunction = () => `
   function copyToClipboard(elementId) {
@@ -270,7 +266,7 @@ const copyToClipboardFunction = () => `
       button.classList.add('btn-outline-secondary');
     }, 2000);
   }
-`;
+`
 
 const shortenAllUrlsFunction = () => `
   let isShortening = false; // Add flag to track shortening status
@@ -324,7 +320,7 @@ const shortenAllUrlsFunction = () => `
       shortenButton.innerHTML = '<i class="fas fa-compress-alt me-2"></i>Shorten Links';
     }
   }
-`;
+`
 
 const darkModeToggleFunction = () => `
   const darkModeToggle = document.getElementById('darkModeToggle');
@@ -357,7 +353,7 @@ const darkModeToggleFunction = () => `
   });
 
   observer.observe(body, { attributes: true });
-`;
+`
 
 const generateRuleSetSelection = () => `
   <div class="container">
@@ -380,14 +376,16 @@ const generateRuleSetSelection = () => `
       </select>
     </div>
     <div class="row" id="ruleCheckboxes">
-      ${UNIFIED_RULES.map(rule => `
+      ${UNIFIED_RULES.map(
+        (rule) => `
         <div class="col-md-4 mb-2">
           <div class="form-check">
             <input class="form-check-input rule-checkbox" type="checkbox" value="${rule.name}" id="${rule.name}" name="selectedRules">
             <label class="form-check-label" for="${rule.name}">${rule.outbound}</label>
           </div>
         </div>
-      `).join('')}
+      `
+      ).join('')}
     </div>
     <div class="mt-4">
       <h5>Custom Rules</h5>
@@ -401,7 +399,7 @@ const generateRuleSetSelection = () => `
     <button type="button" class="btn btn-secondary mt-2" onclick="addCustomRule()">Add Custom Rule</button>
   </div>
   </div>
-`;
+`
 
 const applyPredefinedRulesFunction = () => `
   function applyPredefinedRules() {
@@ -438,7 +436,7 @@ const applyPredefinedRulesFunction = () => `
       });
     });
   });
-`;
+`
 
 const tooltipFunction = () => `
   function initTooltips() {
@@ -460,7 +458,7 @@ const tooltipFunction = () => `
   }
 
   document.addEventListener('DOMContentLoaded', initTooltips);
-`;
+`
 
 const submitFormFunction = () => `
   function submitForm(event) {
@@ -613,7 +611,7 @@ const submitFormFunction = () => `
     document.getElementById('encodeForm').addEventListener('submit', submitForm);
     document.getElementById('clearFormBtn').addEventListener('click', clearFormData);
   });
-`;
+`
 
 const customRuleFunctions = `
   let customRuleCount = 0;
@@ -685,7 +683,7 @@ const customRuleFunctions = `
       }, { once: true });
     }
   }
-`;
+`
 
 const generateQRCodeFunction = () => `
   function generateQRCode(id) {
@@ -747,7 +745,7 @@ const generateQRCodeFunction = () => `
       }, { once: true });
     }
   }
-`;
+`
 
 const saveConfig = () => `
   function saveConfig() {
@@ -784,7 +782,7 @@ const saveConfig = () => `
       alert('Error: ' + error.message);
     });
   }
-`;
+`
 
 const clearConfig = () => `
   function clearConfig() {
@@ -794,4 +792,4 @@ const clearConfig = () => `
     window.history.pushState({}, '', currentUrl);
     localStorage.removeItem('configEditor');
   }
-`;
+`
